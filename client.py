@@ -13,7 +13,7 @@ from cryptography.hazmat.primitives.asymmetric import padding
 
 
 def load_rsa_private_key(key_file):
-    with open(key_file, "r") as key_file:
+    with open(key_file, 'r') as key_file:
         private_rsa_key = key_file.read()
 
     #print("Private key RSA:", private_rsa_key)
@@ -30,7 +30,7 @@ def load_rsa_private_key(key_file):
     return private_key
 
 def load_rsa_public_key(key_file):
-    with open(key_file, "r") as key_file:
+    with open(key_file, 'r') as key_file:
         public_rsa_key = key_file.read()
 
     #print("Private key RSA:", public_rsa_key)
@@ -57,7 +57,7 @@ def encrypt(cleartext, public_key):
     #print("Ciphertext plain:", ciphertext)
     #print("Ciphertext plain length:", len(ciphertext))
     #print("Ciphertext base64:", base64.b64encode(ciphertext))
-    #print("Ciphertext base64 lenfth:", len(base64.b64encode(ciphertext)))
+    #print("Ciphertext base64 length:", len(base64.b64encode(ciphertext)))
     return base64.b64encode(ciphertext)
 
 def decrypt(ciphertext, private_key):
