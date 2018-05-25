@@ -1,4 +1,3 @@
-import asyncio
 import hashlib
 import time
 import os
@@ -23,10 +22,9 @@ async def index(request):
     return web.json_response(messages)
 
 
-@asyncio.coroutine
-def post_handler(request):
+async def post_handler(request):
     random_data()
-    body = yield from request.post()
+    body = await request.post()
     msg_id = hashlib.sha256(b'\x00' + os.urandom(12) + b'\x00').hexdigest()
     messages[msg_id] = {
         'ts': time.time(),
@@ -36,9 +34,8 @@ def post_handler(request):
     return web.Response(text="post")
 
 
-@asyncio.coroutine
-def delete_handler(request):
-    body = yield from request.post()
+async def delete_handler(request):
+    body = await request.post()
     for key, msg_id in body.items():
         if msg_id in messages.keys():
             del messages[msg_id]
