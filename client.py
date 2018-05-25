@@ -15,6 +15,7 @@ URL = 'http://localhost:8080'
 
 
 def load_rsa_private_key(key_file):
+    """Load a private key."""
     with open(key_file, 'r') as key_file:
         private_rsa_key = key_file.read()
 
@@ -33,6 +34,7 @@ def load_rsa_private_key(key_file):
 
 
 def load_rsa_public_key(key_file):
+    """Load a public key."""
     with open(key_file, 'r') as key_file:
         public_rsa_key = key_file.read()
 
@@ -50,6 +52,7 @@ def load_rsa_public_key(key_file):
 
 
 def encrypt(cleartext, public_key):
+    """Encrypt a cleartext."""
     ciphertext = public_key.encrypt(
         cleartext.encode('utf-8'),
         padding.OAEP(
@@ -66,6 +69,7 @@ def encrypt(cleartext, public_key):
 
 
 def decrypt(ciphertext, private_key):
+    """Decrypt a ciphertext"""
     #print("Ciphertext base64:", ciphertext)
     #print("Ciphertext base64 length:", len(ciphertext))
     #print("Ciphertext plain:", base64.b64decode(ciphertext))
