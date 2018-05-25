@@ -11,6 +11,8 @@ from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import padding
 
+URL = 'http://localhost:8080'
+
 
 def load_rsa_private_key(key_file):
     with open(key_file, 'r') as key_file:
@@ -104,7 +106,7 @@ def send(rid, sid, msg):
         'rid': rid,
         'msg': encrypt(json.dumps(plaintext), public_key),
     }
-    r = requests.post('http://localhost:8080', data=data, timeout=5)
+    r = requests.post(URL, data=data, timeout=5)
     print("Status code is", r.status_code)
 
 
@@ -116,7 +118,7 @@ def get(rid):
     sid = ts = raw = msg = None
     msg_ids = []
     private_key = load_rsa_private_key('{}-private.pem'.format(rid))
-    req_get = requests.get('http://localhost:8080', timeout=5)
+    req_get = requests.get(URL, timeout=5)
 
     for msg_id, msg_content in req_get.json().items():
         if rid == msg_content['rid']:
@@ -138,7 +140,7 @@ def get(rid):
     data = {
         'msg_ids': msg_ids,
     }
-    req_del = requests.delete('http://localhost:8080', data=data, timeout=5)
+    req_del = requests.delete(URL, data=data, timeout=5)
     print(req_del.status_code)
 
 
