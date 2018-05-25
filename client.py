@@ -29,6 +29,7 @@ def load_rsa_private_key(key_file):
     #print("Check for RSA private key:", isinstance(private_key, rsa.RSAPrivateKey))
     return private_key
 
+
 def load_rsa_public_key(key_file):
     with open(key_file, 'r') as key_file:
         public_rsa_key = key_file.read()
@@ -45,6 +46,7 @@ def load_rsa_public_key(key_file):
     #print("Check for RSA public key:", isinstance(public_key, rsa.RSAPublicKey))
     return public_key
 
+
 def encrypt(cleartext, public_key):
     ciphertext = public_key.encrypt(
         cleartext.encode('utf-8'),
@@ -59,6 +61,7 @@ def encrypt(cleartext, public_key):
     #print("Ciphertext base64:", base64.b64encode(ciphertext))
     #print("Ciphertext base64 length:", len(base64.b64encode(ciphertext)))
     return base64.b64encode(ciphertext)
+
 
 def decrypt(ciphertext, private_key):
     #print("Ciphertext base64:", ciphertext)
@@ -83,6 +86,7 @@ def cli(debug):
     #click.echo('Debug mode is %s' % ('on' if debug else 'off'))
     pass
 
+
 @cli.command()
 @click.option('--rid', default="")
 @click.option('--sid', default="")
@@ -102,6 +106,7 @@ def send(rid, sid, msg):
     }
     r = requests.post('http://localhost:8080', data=data, timeout=5)
     print("Status code is", r.status_code)
+
 
 @cli.command()
 @click.option('--rid', default="")
@@ -135,6 +140,7 @@ def get(rid):
     }
     req_del = requests.delete('http://localhost:8080', data=data, timeout=5)
     print(req_del.status_code)
+
 
 if __name__ == '__main__':
     cli()
