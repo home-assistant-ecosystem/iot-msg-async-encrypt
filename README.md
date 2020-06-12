@@ -6,7 +6,7 @@ are protected by an asymetrical encryption.
 The sender using the public key of the recipient to encrypt the message and
 sends it to intermediary system. This system could be anything, here is a 
 very simple RESTful API which is acting as storage location from the messages.
-[Home Assistent](https://home-assistant.io/) which is the consumer of the
+[Home Assistant](https://home-assistant.io/) which is the consumer of the
 messages is pulling the messages from the intermediary system, decrypting it,
 and exposing the data as sensor values.
 
