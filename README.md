@@ -1,4 +1,4 @@
-# Send and receive encrypted messages with Home Assistant
+# Send and receive encrypted messages
 
 This little project is a prototype for sending and receiving messages which
 are protected by an asymetrical encryption.
@@ -6,7 +6,8 @@ are protected by an asymetrical encryption.
 The sender using the public key of the recipient to encrypt the message and
 sends it to intermediary system. This system could be anything, here is a 
 very simple RESTful API which is acting as storage location from the messages.
-[Home Assistant](https://home-assistant.io/) which is the consumer of the
+
+E.g., [Home Assistant](https://home-assistant.io/) which is the consumer of the
 messages is pulling the messages from the intermediary system, decrypting it,
 and exposing the data as sensor values.
 
