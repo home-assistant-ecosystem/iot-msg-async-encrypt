@@ -14,7 +14,7 @@ and exposing the data as sensor values.
 The purpose is to be able to collect messages from remote locations in a 
 secure way when there is no other option available beside GET and POST.
 
-Don't use this in production.
+**Don't use this in production !! Especially not with the Home Assistant Operating system !!**
 
 ## Requirements
 
